@@ -3,10 +3,10 @@
 =====
 <br>
 Reflectometer mySensor(**Emitter pin**, **Sensor pin (analog input)**, **Readings**, **Filter**);
-> **Emitter pin**: Insert the Arduino pin where you connected the positive of the IR/visible light emitter
-> **Sensor pin**: Insert the Arduino analog pin where you connected the positive of the photodiode/LED 
-> **Readings**: Insert the number of analog reading you want to perform for one measurement
-> **Filter**: Insert a number from 0 to 1 to filter the output value
+> **Emitter pin**: Insert the Arduino pin where you connected the positive of the IR/visible light emitter<br>
+> **Sensor pin**: Insert the Arduino analog pin where you connected the positive of the photodiode/LED <br>
+> **Readings**: Insert the number of analog reading you want to perform for one measurement<br>
+> **Filter**: Insert a number from 0 to 1 to filter the output value<br>
 
 mysensor.distance(); 
 <br>
