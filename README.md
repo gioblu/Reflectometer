@@ -7,7 +7,7 @@ Reflectometer mySensor(**emitter pin**, **sensor pin (analog input)**, **how man
 <br>
 mysensor.distance(); 
 <br>
-> Returns some type of distance measurement using ISL (Inverse Square Law), obviously its impossible to determine a correct distance value without knowing the reflectivity of the object in front (could be a mirror 10m away or a black paper sheet at 1m), so in this case is only an estimated value.
+> Returns distance measurement using ISL (Inverse Square Law), obviously its impossible to determine a correct distance value without knowing the reflectivity of the object in front (could be a mirror 10m away or a black paper sheet at 1m), so in this case is only an estimated value.
 
 
 
