@@ -50,7 +50,7 @@ double Reflectometer::distance() {
   this->reflex();
 
   if(_ambient < _intensity)
-  	_intensity = _intensity - _ambient;
+    _intensity = _intensity - _ambient;
   else return 0;
 
   if(_intensity > _max_intensity)
