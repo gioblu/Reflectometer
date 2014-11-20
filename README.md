@@ -1,6 +1,6 @@
-Reflectometer Arduino library
+### Reflectometer Arduino library
 <br>
-Wire and use in a simple way photodiode / LED based reflectometers / range finders
+### Wire and use in a simple way photodiode / LED based reflectometers / range finders
 =====
 <br>
 Reflectometer mySensor(emitter pin, sensor pin (analog input), how many readings, filter);
