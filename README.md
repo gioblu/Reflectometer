@@ -1,5 +1,4 @@
 ### Reflectometer Arduino library
-<br>
 ### Wire and use in a simple way photodiode / LED based reflectometers / range finders
 =====
 <br>
