@@ -19,8 +19,8 @@ Reflectometer::Reflectometer(int emitter, int sensor, int readings, int filter) 
   _filter = filter;
 
   (_SFR_BYTE(ADCSRA) |= _BV(ADPS2));
-	(_SFR_BYTE(ADCSRA) &= ~_BV(ADPS1));
-	(_SFR_BYTE(ADCSRA) |= _BV(ADPS0));
+  (_SFR_BYTE(ADCSRA) &= ~_BV(ADPS1));
+  (_SFR_BYTE(ADCSRA) |= _BV(ADPS0));
 
 };
 
