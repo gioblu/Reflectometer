@@ -9,7 +9,17 @@ Reflectometer mySensor(**Emitter pin**, **Sensor pin**, **Readings**, **Filter**
 
 mysensor.distance(); 
 <br>
-> Returns distance measurement using ISL (Inverse Square Law), obviously its impossible to determine a correct distance value without knowing the reflectivity of the object in front (could be a mirror 10m away or a black paper sheet at 1m), so in this case is only an estimated value.
+> Returns **distance** measurement using ISL (Inverse Square Law), obviously its impossible to determine a correct distance value without knowing the reflectivity of the object in front (could be a mirror 10m away or a black paper sheet at 1m), so in this case is only an estimated value.
+
+mysensor.ambient(); 
+<br>
+> Returns **ambient light** value that is the sum of all readings done with the LED emitter off
+
+mysensor.reflex(); 
+<br>
+> Returns **light measurement** value that is the sum of all readings done with the LED emitter on
+
+
 
 
 
