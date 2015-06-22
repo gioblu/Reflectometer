@@ -24,7 +24,7 @@ Reflectometer::Reflectometer(int emitter, int sensor, int readings, int filter) 
 
 };
 
-double Reflectometer::ambient() {
+void Reflectometer::compute_ambient_light() {
 
   _ambient = 0;
   digitalWrite(_emitter, LOW);
@@ -33,7 +33,7 @@ double Reflectometer::ambient() {
     _ambient = _ambient + analogRead(_sensor);
 };
 
-double Reflectometer::reflex() {
+void Reflectometer::compute_reflex() {
 
   _intensity = 0;
   digitalWrite(_emitter, HIGH);
@@ -42,22 +42,26 @@ double Reflectometer::reflex() {
     _intensity = _intensity + analogRead(_sensor);
 
   digitalWrite(_emitter, LOW);
+};
 
-  return _intensity;
+double Reflectometer::ambient_light() {
+  return _ambient;
 };
 
 double Reflectometer::distance() {
   
-  this->ambient();
-  this->reflex();
+  this->compute_ambient_light();
+  this->compute_reflex();
 
   if(_ambient < _intensity)
     _intensity = _intensity - _ambient;
-  else return 0;
+  else 
+    return 0;
 
   if(_intensity > _max_intensity)
     _max_intensity = _intensity;
 
   return _distance = (_distance * _filter) + (sqrt(_max_intensity / _intensity) * (1 - _filter));
-
 };
+
+

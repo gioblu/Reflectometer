@@ -5,9 +5,14 @@
 */
 
 #ifndef Reflectometer_h
-#define Reflectometer_h
-#include "WProgram.h"
-#include "WConstants.h"
+  #define Reflectometer_h
+
+  #if defined(ARDUINO) && (ARDUINO >= 100)
+    #include "Arduino.h"
+  #else
+    #include "WProgram.h"
+    #include "WConstants.h"
+  #endif
 #endif
 
 class Reflectometer {
@@ -16,9 +21,10 @@ class Reflectometer {
 
     Reflectometer(int emitter, int sensor, int readings, int filter);
 
-    double ambient();
-    double reflex();
+    double compute_ambient_light();
+    double compute_reflex();
     double distance();
+    double ambient_light();
 
   private:
 
