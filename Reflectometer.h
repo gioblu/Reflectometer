@@ -21,8 +21,8 @@ class Reflectometer {
 
     Reflectometer(int emitter, int sensor, int readings, int filter);
 
-    double compute_ambient_light();
-    double compute_reflex();
+    void compute_ambient_light();
+    void compute_reflex();
     double distance();
     double ambient_light();
 
