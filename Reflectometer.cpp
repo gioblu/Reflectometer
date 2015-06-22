@@ -42,6 +42,8 @@ double Reflectometer::reflex() {
     _intensity = _intensity + analogRead(_sensor);
 
   digitalWrite(_emitter, LOW);
+
+  return _intensity;
 };
 
 double Reflectometer::distance() {
