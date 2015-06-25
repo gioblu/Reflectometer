@@ -7,13 +7,11 @@
 
   Pass to the constructor the photodiode analog pin and the LED emitter pin
   you are using to get a ISL (Inverse Square Law) distance sensor.
-  
+
   Created by Giovanni Blu Mitolo, November 13, 2014.
   Released into the public domain.
 */
 
-#include "WProgram.h"
-#include "WConstants.h"
 #include "Reflectometer.h"
 
 Reflectometer::Reflectometer(int emitter, int sensor, int readings, int filter) {
