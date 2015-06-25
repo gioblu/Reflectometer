@@ -1,5 +1,13 @@
 /*
-  Reflectometer.cpp - General purpose library for reflectometer sensors.
+  Reflectometer.cpp - General purpose library for reflectometers.
+  
+  With one photodiode, one LED (better if IR but can be also visible light) and
+  Reflectometer you can have a decent distance sensor with up to 5 meters range
+  depending on your setup.
+
+  Pass to the constructor the photodiode analog pin and the LED emitter pin
+  you are using to get a ISL (Inverse Square Law) distance sensor.
+  
   Created by Giovanni Blu Mitolo, November 13, 2014.
   Released into the public domain.
 */
@@ -9,7 +17,6 @@
 #include "Reflectometer.h"
 
 Reflectometer::Reflectometer(int emitter, int sensor, int readings, int filter) {
-
   pinMode(sensor, INPUT);
   pinMode(emitter, OUTPUT);
 
@@ -21,11 +28,9 @@ Reflectometer::Reflectometer(int emitter, int sensor, int readings, int filter) 
   (_SFR_BYTE(ADCSRA) |= _BV(ADPS2));
   (_SFR_BYTE(ADCSRA) &= ~_BV(ADPS1));
   (_SFR_BYTE(ADCSRA) |= _BV(ADPS0));
-
 };
 
-void Reflectometer::compute_ambient_light() {
-
+void Reflectometer::update_ambient_light() {
   _ambient = 0;
   digitalWrite(_emitter, LOW);
 
@@ -33,8 +38,7 @@ void Reflectometer::compute_ambient_light() {
     _ambient = _ambient + analogRead(_sensor);
 };
 
-void Reflectometer::compute_reflex() {
-
+void Reflectometer::update_reading_with_emitter() {
   _intensity = 0;
   digitalWrite(_emitter, HIGH);
 
@@ -48,10 +52,15 @@ double Reflectometer::ambient_light() {
   return _ambient;
 };
 
+double Reflectometer::reflex() {
+  this->update_ambient_light();
+  this->update_reading_with_emitter();
+  return _intensity - _ambient;
+};
+
 double Reflectometer::distance() {
-  
-  this->compute_ambient_light();
-  this->compute_reflex();
+  this->update_ambient_light();
+  this->update_reading_with_emitter();
 
   if(_ambient < _intensity)
     _intensity = _intensity - _ambient;
